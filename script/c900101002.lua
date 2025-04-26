@@ -98,9 +98,9 @@ function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.BreakEffect()
 	if Duel.Remove(srg,POS_FACEUP,REASON_EFFECT)==0 then return end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_DESTROY)
+	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,0,LOCATION_ONFIELD|LOCATION_GRAVE,1,ct,nil,tp,POS_FACEDOWN,REASON_EFFECT)
 	local dg=g:Select(tp,1,1,nil)
 	if #dg>0 then
 		Duel.HintSelection(dg,true)
-		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,dg)
 	end
 end
