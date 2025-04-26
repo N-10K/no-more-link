@@ -46,6 +46,9 @@ s.listed_series={SET_TRAPTRIX,SET_TRAP_HOLE,SET_HOLE}
 function s.matfilter(c,lc,sumtype,tp)
 	return c:IsSetCard(SET_TRAPTRIX,lc,sumtype,tp)
 end
+function s.imcon(e)
+	return e:GetHandler():GetOverlayCount()>0
+end
 	--Unaffected by trap effects
 function s.efilter(e,te)
 	return te:IsTrapEffect()
