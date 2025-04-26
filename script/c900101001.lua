@@ -6,7 +6,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--Xyz Summon procedure
-	Xyz.AddProcedure(c,nil,4,2)
+	Xyz.AddProcedure(c,nil,4,2,nil,nil,nil,nil,false,s.xyzcheck)
 	--Unaffected by trap effects
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -40,6 +40,12 @@ function s.initial_effect(c)
 	c:RegisterEffect(e3,false,REGISTER_FLAG_DETACH_XMAT)
 end
 s.listed_series={SET_HOLE,SET_TRAP_HOLE,SET_TRAPTRIX}
+function s.xyzfilter(c,xyz,tp)
+	return c:IsRace(RACE_INSECT|RACE_PLANT,xyz,SUMMON_TYPE_XYZ,tp)
+end
+function s.xyzcheck(g,tp,xyz)
+	return mg:IsExists(s.xyzfilter,1,nil,xyz,tp)
+end
 function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 	if not (rp==tp and re:IsTrapEffect() and re:IsHasType(EFFECT_TYPE_ACTIVATE) and not Duel.HasFlagEffect(tp,id)) then return false end
 	local rc=re:GetHandler()
