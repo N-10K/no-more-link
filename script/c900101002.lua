@@ -35,8 +35,9 @@ function s.initial_effect(c)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
 	e3:SetTarget(s.negtg)
+	e3:SetCost(Cost.Detach(1))
 	e3:SetOperation(s.negop)
-	c:RegisterEffect(e3)
+	c:RegisterEffect(e3,false,REGISTER_FLAG_DETACH_XMAT)
 end
 s.listed_series={SET_TRAPTRIX}
 function s.ovfilter(c,tp,lc)
@@ -100,6 +101,6 @@ function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	local dg=g:Select(tp,1,1,nil)
 	if #dg>0 then
 		Duel.HintSelection(dg,true)
-		Duel.Destroy(dg,REASON_EFFECT)
+		Duel.SetOperationInfo(0,CATEGORY_REMOVE,nil,1,1-tp,dg)
 	end
 end
