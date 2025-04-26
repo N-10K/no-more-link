@@ -46,7 +46,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 		and rc:IsLocation(LOCATION_STZONE)
 end
 function s.matfilter(c,lc,sumtype,tp)
-	return c:IsRace(RACE_INSECT|RACE_PLANT,lc,sumtype,tp) and or c:IsLevel(4,lc,sumtype,tp)
+	return c:IsRace(RACE_INSECT|RACE_PLANT,lc,sumtype,tp) or c:IsLevel(4,lc,sumtype,tp)
 end
 function s.imcon(e)
 	return e:GetHandler():GetOverlayCount()>0
