@@ -1,6 +1,7 @@
 --セラの蟲惑魔
 --Traptrix Sera
 --scripted by Logical Nonsense
+--Editted by N10K
 local s,id=GetID()
 function s.initial_effect(c)
 	--XyZ summon method
