@@ -5,7 +5,7 @@ local s,id=GetID()
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--Xyz Summon procedure
-	Xyz.AddProcedure(c,aux.FilterBoolFunctionEx(Card.IsRace,RACE_INSECT|RACE_PLANT) and or aux.FilterBoolFunctionEx(Card.IsLevel,4),4,2)
+	Xyz.AddProcedure(c,s.matfilter,4,2)
 	--Unaffected by trap effects
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
@@ -46,7 +46,7 @@ function s.setcon(e,tp,eg,ep,ev,re,r,rp)
 		and rc:IsLocation(LOCATION_STZONE)
 end
 function s.matfilter(c,lc,sumtype,tp)
-	return c:IsSetCard(SET_TRAPTRIX,lc,sumtype,tp)
+	return c:IsRace(RACE_INSECT|RACE_PLANT,lc,sumtype,tp) and or c:IsLevel(4,lc,sumtype,tp)
 end
 function s.imcon(e)
 	return e:GetHandler():GetOverlayCount()>0
