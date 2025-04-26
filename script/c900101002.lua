@@ -50,6 +50,10 @@ end
 function s.lcheck(g,lc,sumtype,tp)
 	return g:IsExists(Card.IsRace,1,nil,RACE_INSECT|RACE_PLANT,lc,sumtype,tp)
 end
+function s.imcon(e)
+	return e:GetHandler():GetOverlayCount()>0
+end
+	--Unaffected by trap effects
 function s.efilter(e,te)
 	return te:IsTrapEffect()
 end
