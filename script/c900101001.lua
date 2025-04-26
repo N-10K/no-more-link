@@ -41,7 +41,7 @@ function s.initial_effect(c)
 end
 s.listed_series={SET_HOLE,SET_TRAP_HOLE,SET_TRAPTRIX}
 function s.xyzfilter(c,xyz,tp)
-	return c:IsRace(RACE_INSECT|RACE_PLANT,xyz,SUMMON_TYPE_XYZ,tp)
+	return c:IsRace(c,RACE_INSECT|RACE_PLANT,xyz,SUMMON_TYPE_XYZ,tp)
 end
 function s.xyzcheck(g,tp,xyz)
 	return mg:IsExists(s.xyzfilter,1,nil,xyz,tp)
